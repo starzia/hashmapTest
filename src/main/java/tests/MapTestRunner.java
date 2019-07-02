@@ -73,8 +73,13 @@ public class MapTestRunner {
             GsObjMapTest.class,
             JdkMapTest.class,  //+
             JdkMapTestDifferentCapacity.class,  //+
+            JdkTreeMapTest.class,
             TroveObjMapTest.class,   //+
             ObjObjMapTest.class   //
+    };
+    private static final Class[] TESTS_HASH_VS_TREE = {
+            JdkMapTest.class,
+            JdkTreeMapTest.class
     };
     private static final Class[] TESTS_PRIMITIVE_WRAPPER = {
             FastUtilIntObjectMapTest.class,
@@ -118,12 +123,15 @@ public class MapTestRunner {
     private static String runTestSet(final String testSetName) throws RunnerException, InstantiationException, IllegalAccessException
     {
         final List<Class> tests = new ArrayList<>();
+        /*
         tests.addAll( Arrays.asList( TESTS_ARTICLE ) );
         tests.addAll( Arrays.asList( TESTS_PRIMITIVE ) );
         tests.addAll( Arrays.asList( TESTS_WRAPPER ) );
         tests.addAll( Arrays.asList( TESTS_PRIMITIVE_WRAPPER ) );
         tests.addAll( Arrays.asList( TESTS_WRAPPER_PRIMITIVE ) );
         tests.addAll( Arrays.asList( TESTS_IDENTITY ) );
+        */
+        tests.addAll( Arrays.asList( TESTS_HASH_VS_TREE ) );
 
         //first level: test class, second level - map size
         final Map<String, Map<Integer, String>> results = new HashMap<>();

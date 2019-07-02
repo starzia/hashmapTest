@@ -148,6 +148,21 @@ questions.
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <filters>
+                        <!-- Some of the 3rd party jars are signed, and we must discard the signatures if bundling
+                         into one big jar.  Otherwise we get:
+                          java.lang.SecurityException: Invalid signature file digest for Manifest main attributes -->
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
             </plugin>
         </plugins>
         <pluginManagement>
